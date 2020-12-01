@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 import noteService from './services/notes'
 import loginService from './services/login'
-import { Button } from 'react-bootstrap'
+import { Button, Navbar, Nav } from 'react-bootstrap'
 
 import Home from './components/Home'
 import Users from './components/Users'
@@ -16,8 +16,6 @@ import LoginForm from './components/LoginForm'
 import Notification from './components/Notification'
 import Footer from './components/Footer'
 import Togglable from './components/Togglable'
-
-import './App.css'
 
 const TheNote = ({ notes }) => {
   const id = useParams().id
@@ -186,15 +184,28 @@ const App = () => {
   // DOM
   return (
     <Router>
-      <div className="page-links">
-        <Link style={padding} to="/">home</Link>
-        <Link style={padding} to="/notes">notes</Link>
-        <Link style={padding} to="/users">users</Link>
-        {user
-          ? <em style={padding}>{user.name}</em>
-          : <Link style={padding} to="/login">login</Link>
-        }
-      </div>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#" as="span">
+              <Link style={padding} to="/">HOME</Link>
+            </Nav.Link>
+            <Nav.Link href="#" as="span">
+              <Link style={padding} to="/notes">NOTES</Link>
+            </Nav.Link>
+            <Nav.Link href="#" as="span">
+              <Link style={padding} to="/users">USERS</Link>
+            </Nav.Link>
+            <Nav.Link href="#" as="span">
+              {user
+                ? <em>{user.name} logged in</em>
+                : <Link to="/login">login</Link>
+              }
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
 
       <Switch>
         <Route path="/notes/:id">
@@ -202,7 +213,7 @@ const App = () => {
         </Route>
 
         <Route path="/notes">
-          <div className='app'>
+          <div className="container">
             <h1>Notes App</h1>
             {
               errorMessage
@@ -222,7 +233,7 @@ const App = () => {
                 </div>
                 :
                 <div>
-                  <p>{user.name} logged-in</p><Button variant="primary" onClick={handleLogout}>Logout</Button>
+                  <p style={{display: 'inline', margin: '0 1rem 0 0'}}>{user.name} logged-in</p><Button variant="primary" onClick={handleLogout}>Logout</Button>
                   <Togglable buttonLabel='new note' ref={noteFormRef}>
                     <NoteForm createNote={addNote} />
                   </Togglable>

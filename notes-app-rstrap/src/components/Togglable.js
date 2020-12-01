@@ -2,6 +2,8 @@ import React, { useState, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'react-bootstrap'
 
+import './Togglable.css'
+
 // ref is received here and forwarded
 const Togglable = React.forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false)
