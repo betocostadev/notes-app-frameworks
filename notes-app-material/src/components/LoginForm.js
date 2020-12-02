@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {
-  Button,
-  TextField
-} from '@material-ui/core'
+import {  Button,  TextField } from '@material-ui/core'
 
 const LoginForm = ({ login }) => {
   const [username, setUsername] = useState('')
@@ -25,7 +22,7 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <div className="container">
+    <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>

@@ -1,13 +1,14 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
 
 const Users = () => {
   return (
-    <div className="container">
+    <Container>
       <h2>Users</h2>
       <p>
         List of users
       </p>
-    </div>
+    </Container>
   )
 }
 

@@ -15,3 +15,9 @@ Built using [materialUI](https://material-ui.com/)
 
     - npm i
     - npm start
+
+### notes-app-styled
+Built using [Styled components](https://styled-components.com/)
+
+    - npm i
+    - npm start

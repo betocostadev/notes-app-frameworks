@@ -9,7 +9,7 @@ import loginService from './services/login'
 
 import Container from '@material-ui/core/Container'
 import {
-  AppBar, Toolbar, IconButton, Button
+  AppBar, Toolbar, Button
 } from '@material-ui/core'
 
 import Home from './components/Home'
@@ -170,20 +170,11 @@ const App = () => {
       })
   }
 
-  const padding = {
-    padding: 5
-  }
-
   const noteFormRef = useRef()
 
   const notesToShow = showAll
     ? notes
     : notes.filter(note => note.important)
-
-  // const noteList = notesToShow
-  //   .map((note) => <Note key={note.id} toggleImportance={() => toggleImportanceOf(note.id)} deleteNote={() => removeNote(note.id)} note={note} />)
-
-  // console.log(notes)
 
   // DOM
   return (
@@ -191,23 +182,21 @@ const App = () => {
       <Container>
         <AppBar position="static">
           <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-            </IconButton>
-            <Button color="inherit">
-              <Link to="/">home</Link>
+            <Button color="inherit" component={Link} to="/">
+              home
             </Button>
-            <Button color="inherit">
-              <Link to="/notes">notes</Link>
+            <Button color="inherit" component={Link} to="/notes">
+              notes
             </Button>
-            <Button color="inherit">
-              <Link to="/users">users</Link>
+            <Button color="inherit" component={Link} to="/users">
+              users
             </Button>
-            <Button color="inherit">
-              {user
-                ? <em>{user.name} logged in</em>
-                : <Link to="/login">login</Link>
-              }
-            </Button>
+            {user
+              ? <em>{user.name} logged in</em>
+              : <Button color="inherit" component={Link} to="/login">
+                  login
+                </Button>
+            }
           </Toolbar>
         </AppBar>
 
@@ -217,7 +206,7 @@ const App = () => {
         </Route>
 
         <Route path="/notes">
-          <div className="container">
+          <Container>
             <h1>Notes App</h1>
             {
               errorMessage
@@ -252,7 +241,7 @@ const App = () => {
             </div>
 
             <Notes notes={notesToShow} toggleImportance={toggleImportanceOf} deleteNote={removeNote} />
-          </div>
+          </Container>
         </Route>
 
         <Route path="/users" render={() =>

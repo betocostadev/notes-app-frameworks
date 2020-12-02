@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
 
 const Footer = () => {
   const footerStyle = {
@@ -9,10 +10,10 @@ const Footer = () => {
     fontSize: 16,
   }
   return (
-    <div className="container" style={footerStyle}>
+    <Container style={footerStyle}>
       <br />
       <em>Note app, Department of Computer Science, University of Helsinki 2020</em>
-    </div>
+    </Container>
   )
 }
 
